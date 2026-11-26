@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111111">
+<title>DM STYLE | by Daniel Murimanya</title>
+<style>
+:root {
+  --black:#111111;
+  --gold:#d5ad55;
+  --cream:#f8f6f1;
+  --white:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);color:#191919;
+}
+button{cursor:pointer;font-family:inherit}
+a{text-decoration:none;color:inherit}
+.topline{
+  background:#111;color:white;text-align:center;
+  padding:10px;font-size:12px;letter-spacing:1px;
+}
+header{
+  background:white;padding:17px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:20;
+  box-shadow:0 2px 12px #00000010;
+}
+.logo{font-family:Georgia,serif;font-size:27px;font-weight:bold;letter-spacing:2px}
+.logo span{color:var(--gold)}
+.by{font-size:10px;letter-spacing:2px;color:#777;margin-top:4px}
+.header-actions{display:flex;align-items:center;gap:12px}
+.cart-btn{
+  background:#111;color:white;border:0;border-radius:30px;
+  padding:12px 17px;font-weight:bold;position:relative;
+}
+.cart-count{
+  background:var(--gold);color:#111;border-radius:50%;
+  min-width:21px;height:21px;display:inline-flex;
+  align-items:center;justify-content:center;margin-left:5px;
+}
+.hero{
+  min-height:480px;background:
+  linear-gradient(90deg,#000000d9,#00000040),
+  url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600') center/cover;
+  display:flex;align-items:center;padding:55px 8%;color:white;
+}
+.hero-content{max-width:550px}
+.eyebrow{color:var(--gold);letter-spacing:4px;font-size:12px;font-weight:bold}
+.hero h1{
+  font-family:Georgia,serif;font-size:clamp(42px,8vw,76px);
+  line-height:1.08;margin:20px 0;
+}
+.hero h1 span{color:var(--gold)}
+.hero p{line-height:1.8;color:#eeeeee;margin-bottom:25px}
+.gold-btn{
+  display:inline-block;background:var(--gold);color:#111;
+  padding:15px 26px;border:0;font-weight:bold;
+  letter-spacing:1px;border-radius:3px;
+}
+.gold-btn:hover{background:white}
+.section{padding:55px 5%}
+.section-title{text-align:center;margin-bottom:30px}
+.section-title small{color:#b38a37;letter-spacing:3px;font-weight:bold}
+.section-title h2{font-family:Georgia,serif;font-size:34px;margin:10px 0}
+.section-title p{color:#777;font-size:14px}
+.categories{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:15px;
+}
+.category{
+  height:185px;position:relative;overflow:hidden;
+  background:#222;border-radius:5px;color:white;
+  display:flex;align-items:end;padding:18px;
+}
+.category img{
+  position:absolute;width:100%;height:100%;object-fit:cover;
+  inset:0;opacity:.7;transition:.4s;
+}
+.category:hover img{transform:scale(1.08)}
+.category h3{position:relative;font-family:Georgia,serif;font-size:22px}
+.filters{
+  display:flex;justify-content:center;gap:9px;flex-wrap:wrap;
+  margin:25px 0;
+}
+.filter{
+  background:white;border:1px solid #ddd;padding:10px 17px;
+  border-radius:30px;font-size:13px;
+}
+.filter.active,.filter:hover{background:#111;color:white;border-color:#111}
+.search-wrap{max-width:420px;margin:20px auto}
+.search-wrap input{
+  width:100%;padding:14px 17px;border:1px solid #ddd;
+  border-radius:30px;font-size:14px;outline:none;
+}
+.products{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;
+}
+.product{
+  background:white;border-radius:5px;overflow:hidden;
+  box-shadow:0 5px 20px #00000008;transition:.25s;
+}
+.product:hover{transform:translateY(-5px);box-shadow:0 10px 25px #00000015}
+.product-img{height:230px;position:relative;background:#eee}
+.product-img img{width:100%;height:100%;object-fit:cover}
+.tag{
+  position:absolute;top:12px;left:12px;
+  background:#111;color:white;padding:7px 10px;
+  font-size:10px;letter-spacing:1px;
+}
+.product-info{padding:16px}
+.product-info small{color:#999;text-transform:uppercase;font-size:10px;letter-spacing:1px}
+.product-info h3{font-family:Georgia,serif;font-size:18px;margin:8px 0}
+.price{font-weight:bold;color:#a47b2b;font-size:17px;margin:12px 0}
+.add-btn{
+  width:100%;background:#111;color:white;border:0;
+  padding:13px 8px;font-weight:bold;letter-spacing:.5px;
+}
+.add-btn:hover{background:var(--gold);color:#111}
+.empty{grid-column:1/-1;text-align:center;padding:40px;color:#777}
+.promo{
+  background:#171717;color:white;text-align:center;padding:55px 20px;
+}
+.promo h2{font-family:Georgia,serif;font-size:32px;margin:12px}
+.promo p{color:#ccc;line-height:1.8}
+footer{background:#0b0b0b;color:white;padding:40px 6% 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px}
+footer h3{color:var(--gold);margin-bottom:15px}
+footer p,footer a{color:#bbb;font-size:13px;line-height:2}
+.copyright{
+  text-align:center;border-top:1px solid #333;
+  margin-top:30px;padding-top:20px;color:#888;font-size:12px;
+}
+.overlay{
+  position:fixed;inset:0;background:#0009;z-index:40;
+  display:none;
+}
+.overlay.show{display:block}
+.drawer{
+  position:fixed;right:-450px;top:0;height:100%;
+  width:min(420px,100%);background:white;z-index:50;
+  transition:.3s;padding:22px;display:flex;flex-direction:column;
+}
+.drawer.open{right:0}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid #ddd}
+.drawer-head h2{font-family:Georgia,serif}
+.close-btn{border:0;background:none;font-size:28px}
+.cart-items{overflow:auto;flex:1;padding:15px 0}
+.cart-item{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid #eee}
+.cart-item img{width:75px;height:85px;object-fit:cover}
+.cart-details{flex:1}
+.cart-details h4{font-size:14px;margin:5px 0}
+.cart-details p{color:#a47b2b;font-weight:bold}
+.quantity{display:flex;align-items:center;gap:12px;margin-top:9px}
+.quantity button{width:25px;height:25px;border:1px solid #ddd;background:white}
+.remove{color:#b33;border:0;background:none;margin-left:auto}
+.cart-bottom{border-top:1px solid #ddd;padding-top:15px}
+.total{display:flex;justify-content:space-between;font-size:18px;font-weight:bold;margin:12px 0 18px}
+.whatsapp-btn{
+  width:100%;padding:14px;margin:5px 0;border:0;
+  border-radius:3px;background:#159447;color:white;
+  font-weight:bold;font-size:14px;
+}
+.whatsapp-btn.congo{background:#1765b1}
+.note{font-size:11px;color:#888;line-height:1.6;margin-top:10px}
+@media(max-width:900px){
+ .products{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+ header{padding:13px 4%}
+ .logo{font-size:21px}
+ .by{font-size:8px}
+ .cart-btn{padding:10px 11px;font-size:12px}
+ .hero{min-height:410px;padding:35px 7%}
+ .hero h1{font-size:47px}
+ .section{padding:40px 4%}
+ .products{gap:11px}
+ .product-img{height:175px}
+ .product-info{padding:11px}
+ .product-info h3{font-size:15px}
+ .add-btn{font-size:11px;padding:12px 4px}
+ .category{height:145px}
+ .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topline">
+  ✦ STYLE • ÉLÉGANCE • QUALITÉ — BIENVENUE CHEZ DM STYLE ✦
+</div>
+
+<header>
+  <div>
+    <div class="logo">DM <span>STYLE.</span></div>
+    <div class="by">BY DANIEL MURIMANYA</div>
+  </div>
+  <div class="header-actions">
+    <button class="cart-btn" onclick="openCart()">
+      🛍 PANIER <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">COLLECTION EXCLUSIVE</div>
+    <h1>Ton style.<br>Ta <span>signature.</span></h1>
+    <p>
+      Découvre une collection de chaussures, vêtements,
+      montres et accessoires pour hommes et femmes.
+      L'élégance commence ici.
+    </p>
+    <a href="#boutique" class="gold-btn">DÉCOUVRIR LA COLLECTION →</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <small>EXPLORE NOTRE UNIVERS</small>
+    <h2>Nos catégories</h2>
+    <p>Le style pour chaque personnalité.</p>
+  </div>
+  <div class="categories">
+    <a class="category" href="#boutique" onclick="chooseCategory('Chaussures')">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600" alt="Chaussures">
+      <h3>Chaussures</h3>
+    </a>
+    <a class="category" href="#boutique" onclick="chooseCategory('Vêtements')">
+      <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600" alt="Vêtements">
+      <h3>Vêtements</h3>
+    </a>
+    <a class="category" href="#boutique" onclick="chooseCategory('Montres')">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600" alt="Montres">
+      <h3>Montres</h3>
+    </a>
+    <a class="category" href="#boutique" onclick="chooseCategory('Bracelets')">
+      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600" alt="Bracelets">
+      <h3>Bracelets</h3>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="boutique">
+  <div class="section-title">
+    <small>DM STYLE COLLECTION</small>
+    <h2>Notre boutique</h2>
+    <p>Choisis tes articles préférés et ajoute-les au panier.</p>
+  </div>
+
+  <div class="search-wrap">
+    <input id="search" type="search" placeholder="🔎 Rechercher un article..." oninput="renderProducts()">
+  </div>
+
+  <div class="filters" id="categoryFilters">
+    <button class="filter active" onclick="setCategory('Tous',this)">Tout</button>
+    <button class="filter" onclick="setCategory('Chaussures',this)">Chaussures</button>
+    <button class="filter" onclick="setCategory('Vêtements',this)">Vêtements</button>
+    <button class="filter" onclick="setCategory('Montres',this)">Montres</button>
+    <button class="filter" onclick="setCategory('Bracelets',this)">Bracelets</button>
+  </div>
+  <div class="filters" id="genderFilters">
+    <button class="filter active" onclick="setGender('Tous',this)">Hommes & Femmes</button>
+    <button class="filter" onclick="setGender('Homme',this)">Hommes</button>
+    <button class="filter" onclick="setGender('Femme',this)">Femmes</button>
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="promo">
+  <div class="eyebrow">BY DANIEL MURIMANYA</div>
+  <h2>L'élégance n'a pas de limites.</h2>
+  <p>Un style qui te ressemble. Une collection qui te distingue.<br>Merci de faire confiance à DM STYLE.</p>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>DM STYLE.</h3>
+      <p>Une boutique dédiée à la mode et aux accessoires pour hommes et femmes.</p>
+      <p><strong>by Daniel Murimanya</strong></p>
+    </div>
+    <div>
+      <h3>Nos collections</h3>
+      <p>Chaussures</p>
+      <p>Vêtements</p>
+      <p>Montres</p>
+      <p>Bracelets</p>
+    </div>
+    <div>
+      <h3>Commandes WhatsApp</h3>
+      <p>Burundi : +257 66124880</p>
+      <p>RDC : +243 961991864</p>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2026 DM STYLE — by Daniel Murimanya. Tous droits réservés.
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2>Mon panier 🛍</h2>
+    <button class="close-btn" onclick="closeCart()">×</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-bottom">
+    <div class="total">
+      <span>Total</span>
+      <span id="cartTotal">$0.00</span>
+    </div>
+    <p style="font-size:13px;margin-bottom:8px;font-weight:bold">
+      Choisis ton pays pour commander :
+    </p>
+    <button class="whatsapp-btn" onclick="checkout('25766124880','Burundi')">
+      WhatsApp Burundi 🇧🇮
+    </button>
+    <button class="whatsapp-btn congo" onclick="checkout('243961991864','RDC')">
+      WhatsApp RDC 🇨🇩
+    </button>
+    <p class="note">Ta commande sera préparée dans un message WhatsApp. Tu pourras vérifier les articles avant de l'envoyer.</p>
+  </div>
+</aside>
+
+<script>
+const products = [
+ {id:1,name:"Sneakers Urban",category:"Chaussures",gender:"Homme",price:35,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700"},
+ {id:2,name:"Sneakers élégantes",category:"Chaussures",gender:"Femme",price:38,image:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=700"},
+ {id:3,name:"Chaussures classiques",category:"Chaussures",gender:"Homme",price:42,image:"https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=700"},
+ {id:4,name:"Chaussures Fashion",category:"Chaussures",gender:"Femme",price:40,image:"https://images.unsplash.com/photo-1560343090-f0409e92791a?w=700"},
+ {id:5,name:"T-shirt Premium",category:"Vêtements",gender:"Homme",price:18,image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700"},
+ {id:6,name:"Robe élégante",category:"Vêtements",gender:"Femme",price:32,image:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=700"},
+ {id:7,name:"Chemise classique",category:"Vêtements",gender:"Homme",price:27,image:"https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=700"},
+ {id:8,name:"Tenue Fashion",category:"Vêtements",gender:"Femme",price:36,image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=700"},
+ {id:9,name:"Montre Classic",category:"Montres",gender:"Homme",price:45,image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700"},
+ {id:10,name:"Montre Chic",category:"Montres",gender:"Femme",price:39,image:"https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=700"},
+ {id:11,name:"Bracelet Élégance",category:"Bracelets",gender:"Femme",price:15,image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=700"},
+ {id:12,name:"Bracelet Homme",category:"Bracelets",gender:"Homme",price:17,image:"https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=700"}
+];
+
+let cart = JSON.parse(localStorage.getItem("dmstyle_cart") || "[]");
+let selectedCategory = "Tous";
+let selectedGender = "Tous";
+
+function saveCart(){
+ localStorage.setItem("dmstyle_cart",JSON.stringify(cart));
+}
+
+function setCategory(category,button){
+ selectedCategory=category;
+ document.querySelectorAll("#categoryFilters .filter").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ renderProducts();
+}
+
+function chooseCategory(category){
+ selectedCategory=category;
+ document.querySelectorAll("#categoryFilters .filter").forEach(b=>{
+  b.classList.toggle("active",b.textContent.trim()===category);
+ });
+ renderProducts();
+}
+
+function setGender(gender,button){
+ selectedGender=gender;
+ document.querySelectorAll("#genderFilters .filter").forEach(b=>b.classList.remove("active"));
+ button.classList.add("active");
+ renderProducts();
+}
+
+function renderProducts(){
+ const search=document.getElementById("search").value.toLowerCase();
+ const filtered=products.filter(p=>
+  (selectedCategory==="Tous"||p.category===selectedCategory)&&
+  (selectedGender==="Tous"||p.gender===selectedGender)&&
+  (p.name.toLowerCase().includes(search)||p.category.toLowerCase().includes(search))
+ );
+ const container=document.getElementById("products");
+ if(!filtered.length){
+  container.innerHTML='<div class="empty">Aucun article trouvé.</div>';
+  return;
+ }
+ container.innerHTML=filtered.map(p=>`
+  <article class="product">
+   <div class="product-img">
+    <img src="${p.image}" alt="${p.name}" loading="lazy">
+    <span class="tag">${p.gender.toUpperCase()}</span>
+   </div>
+   <div class="product-info">
+    <small>${p.category}</small>
+    <h3>${p.name}</h3>
+    <div class="price">$${p.price.toFixed(2)}</div>
+    <button class="add-btn" onclick="addToCart(${p.id})">
+     + AJOUTER AU PANIER
+    </button>
+   </div>
+  </article>
+ `).join("");
+}
+
+function addToCart(id){
+ const item=cart.find(x=>x.id===id);
+ if(item)item.quantity++;
+ else cart.push({id:id,quantity:1});
+ saveCart();
+ updateCart();
+ const button=event.currentTarget;
+ const old=button.textContent;
+ button.textContent="✓ AJOUTÉ AU PANIER";
+ setTimeout(()=>button.textContent=old,1000);
+}
+
+function updateCart(){
+ const count=cart.reduce((sum,item)=>sum+item.quantity,0);
+ document.getElementById("cartCount").textContent=count;
+ const total=cart.reduce((sum,item)=>{
+  const p=products.find(x=>x.id===item.id);
+  return sum+(p?p.price*item.quantity:0);
+ },0);
+ document.getElementById("cartTotal").textContent="$"+total.toFixed(2);
+ const container=document.getElementById("cartItems");
+ if(!cart.length){
+  container.innerHTML='<div class="empty">🛍<br><br>Ton panier est vide.<br>Découvre nos collections et ajoute tes articles préférés !</div>';
+  return;
+ }
+ container.innerHTML=cart.map(item=>{
+  const p=products.find(x=>x.id===item.id);
+  if(!p)return "";
+  return `
+   <div class="cart-item">
+    <img src="${p.image}" alt="${p.name}">
+    <div class="cart-details">
+     <h4>${p.name}</h4>
+     <p>$${(p.price*item.quantity).toFixed(2)}</p>
+     <div class="quantity">
+      <button onclick="changeQuantity(${p.id},-1)">−</button>
+      <span>${item.quantity}</span>
+      <button onclick="changeQuantity(${p.id},1)">+</button>
+      <button class="remove" onclick="removeItem(${p.id})">Supprimer</button>
+     </div>
+    </div>
+   </div>
+  `;
+ }).join("");
+}
+
+function changeQuantity(id,amount){
+ const item=cart.find(x=>x.id===id);
+ if(!item)return;
+ item.quantity+=amount;
+ if(item.quantity<=0)cart=cart.filter(x=>x.id!==id);
+ saveCart();
+ updateCart();
+}
+
+function removeItem(id){
+ cart=cart.filter(x=>x.id!==id);
+ saveCart();
+ updateCart();
+}
+
+function openCart(){
+ updateCart();
+ document.getElementById("drawer").classList.add("open");
+ document.getElementById("overlay").classList.add("show");
+}
+
+function closeCart(){
+ document.getElementById("drawer").classList.remove("open");
+ document.getElementById("overlay").classList.remove("show");
+}
+
+function checkout(number,country){
+ if(!cart.length){
+  alert("Ton panier est vide. Ajoute d'abord des articles.");
+  return;
+ }
+ let total=0;
+ let message="Bonjour DM STYLE ! Je souhaite passer une commande depuis votre boutique.\n\n";
+ message+="Pays de commande : "+country+"\n\n";
+ message+="MES ARTICLES :\n";
+ cart.forEach(item=>{
+  const p=products.find(x=>x.id===item.id);
+  if(!p)return;
+  total+=p.price*item.quantity;
+  message+= "• "+p.name+" ("+p.gender+") x "+item.quantity+" = $"+(p.price*item.quantity).toFixed(2)+"\n";
+ });
+ message+="\nTOTAL : $"+total.toFixed(2);
+ message+="\n\nMerci de me confirmer la disponibilité et les modalités de livraison.";
+ window.open("https://wa.me/"+number+"?text="+encodeURIComponent(message),"_blank");
+}
+
+renderProducts();
+updateCart();
+</script>
+</body>
+</html>
